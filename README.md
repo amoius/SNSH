@@ -3,11 +3,18 @@ Signed Network Representation Learning Algorithm Based on Structural Balance The
 
 基于结构平衡理论和高阶互信息的符号网络表示学习算法
 
+## 摘要
+网络表示学习旨在学习给定网络中节点的低维特征向量表示，已经引起了越来越多的关注。然而，绝大多数现有的网络表示学习算法仅仅针对无符号网络来设计。本文提出了一种基于结构平衡理论的符号网络表示学习框架SNSH，通过反转符号网络中的正负关系生成负图，来对符号网络中隐含的高阶互信息进行挖掘。该方法旨在通过加强的社会平衡理论，来模拟符号网络的局部隐含特征，并通过节点局部嵌入、网络全局结构和节点特征属性三者之间的高阶互信息，得到更全面的符合符号网络特性的节点嵌入。
+
 ## 简介
 Here we provide an implementation of SNSH, along with a minimal execution example (on the Guinea dataset). The repository is organised as follows:
 - `input/` 包含输入数据集;
 - `output/` 包含输出结果;
 - `layers/` 包含SNSH算法互信息层的实现;
+
+## 算法整体框架
+<img width="297" alt="image" src="https://user-images.githubusercontent.com/74093803/193469610-18885226-24f4-4a1f-898d-c0efff950281.png">
+
 
 ## 补充说明的算法细节
 ### 1. 负采样
@@ -23,5 +30,3 @@ Here we provide an implementation of SNSH, along with a minimal execution exampl
 为了提高模型的鲁棒性，我们采用了多次采样的方式，即对于每个节点，我们分别对其正邻居集和负邻居集进行多次采样，每次采样的结果都作为一个训练样本，最终得到的训练样本数目为节点数目的多倍。这样做的好处是，可以使得模型对于每个节点的正负关系都有一定的学习机会，从而提高模型的鲁棒性。
 
 详见代码与论文
-
-
